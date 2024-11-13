@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="rabbitlehole-dive-deep-into-human-truth">RabbitLeHole: Dive Deep Into Human Truth</h1>
+<h2 id="whats-this-all-about">What's This All About?</h2>
+<p>RabbitHole is a betting market for what people think matters most in their lives. Instead of just asking people to fill out boring surveys, we let them put their money where their mouth is! Using Solana's blockchain technology, people can bet on questions like:</p>
+<p><img src="file:///Users/leojiang/Desktop/workspace/RabbitHole-Solana-BettingMarket-dapp/demo_poster.png" alt="Demo of RabbitLeHole betting interface"></p>
+<ul>
+<li>&quot;Which would you choose - living in spacious beautiful house oceanside alone or in a city surrounded by your social circle?&quot;</li>
+<li>&quot;What's preferable - being middle class in a free society or wealthy in an authoritarian one?&quot; (Minimum 10k wallet value to vote)</li>
+<li>&quot;Which leads to more fulfillment - having five 2-year deep relationships or two 5-year ones?&quot;</li>
+<li>&quot;Would you rather have perfect self-control or complete spontaneity?&quot;</li>
+<li>&quot;Which brings more satisfaction - being the smartest person in the room or the most beloved?&quot;</li>
+<li>&quot;What's better - having an extraordinary talent that few appreciate or being moderately good at something everyone values?&quot;</li>
+<li>&quot;Which would you choose - knowing exactly when you'll die or living twice as long with uncertainty?&quot; (Minimum 50k wallet value to vote)</li>
+<li>&quot;What's preferable - being able to relive your past memories perfectly or forget all painful ones?&quot;</li>
+<li>&quot;Would you rather be the author of your life story or have it written by someone who understands you completely?&quot;</li>
+</ul>
+<h2 id="why-this-is-cool">Why This is Cool</h2>
+<p>When people bet real money on their answers, we can:</p>
+<ul>
+<li>See what people <em>think</em> influences their lives most</li>
+<li>Watch how groups of people agree (or disagree!) about what matters</li>
+<li>Learn how confident people are in their beliefs (based on how much they bet)</li>
+<li>Test whether common self-help advice matches what people actually believe</li>
+</ul>
+<h2 id="what-we-can-learn">What We Can Learn</h2>
+<h3 id="about-money--choices">About Money &amp; Choices</h3>
+<ul>
+<li>How much are people willing to bet on their beliefs?</li>
+<li>Do early voters think differently than later ones?</li>
+<li>Does seeing others' bets change people's minds?</li>
+</ul>
+<h3 id="about-groups">About Groups</h3>
+<ul>
+<li>Do friends tend to bet the same way?</li>
+<li>How do communities form around shared beliefs?</li>
+<li>What makes people change their minds?</li>
+</ul>
+<h3 id="about-decision-making">About Decision Making</h3>
+<ul>
+<li>How sure are people about their own happiness factors?</li>
+<li>Does expertise in an area make people bet differently?</li>
+<li>Can we spot patterns in successful bets?</li>
+</ul>
+<h2 id="how-it-works">How It Works</h2>
+<p>We're using Solana (a super-fast blockchain) because it:</p>
+<ul>
+<li>Makes betting quick and easy</li>
+<li>Keeps costs low</li>
+<li>Records everything transparently</li>
+<li>Lets us collect data reliably</li>
+</ul>
+<h2 id="what-data-we-collect">What Data We Collect</h2>
+<p>We keep track of:</p>
+<ul>
+<li>What people bet on</li>
+<li>When they make their bets</li>
+<li>How much they're willing to bet</li>
+<li>How groups of people tend to bet together</li>
+</ul>
+<h2 id="keeping-things-safe--fair">Keeping Things Safe &amp; Fair</h2>
+<p>We promise to:</p>
+<ul>
+<li>Be clear about what data we're collecting</li>
+<li>Keep everyone's identity private</li>
+<li>Make sure everyone knows this is for research</li>
+<li>Help prevent problematic betting behavior</li>
+</ul>
+<h1 id="technical-details">Technical details</h1>
+<h2 id="introduction">Introduction</h2>
+<p>We will develop a decentralized application (dApp) on the Solana blockchain that allows users to participate in betting markets centered around psychologically significant questions. For example, users can vote on questions like &quot;Which has more impact on my daily happiness - sleep or my commute?&quot;. Users place bets on their chosen option, and the winning side receives the losing side's stakes, distributed either evenly or following an exponential decay model where early voters receive a larger share of the winnings.</p>
+<hr>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#project-overview">Project Overview</a></li>
+<li><a href="#technical-stack">Technical Stack</a></li>
+<li><a href="#architecture">Architecture</a></li>
+<li><a href="#smart-contract-design">Smart Contract Design</a></li>
+<li><a href="#frontend-application">Frontend Application</a></li>
+<li><a href="#backend-services">Backend Services</a></li>
+<li><a href="#file-structure-and-mock-code">File Structure and Mock Code</a></li>
+<li><a href="#security-considerations">Security Considerations</a></li>
+<li><a href="#testing-plan">Testing Plan</a></li>
+<li><a href="#deployment-strategy">Deployment Strategy</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ol>
+<hr>
+<h2 id="project-overview">Project Overview</h2>
+<h3 id="objectives">Objectives</h3>
+<ul>
+<li><strong>Create a user-friendly betting platform</strong> that revolves around psychologically engaging questions.</li>
+<li><strong>Leverage Solana's high throughput and low transaction fees</strong> to provide a seamless user experience.</li>
+<li><strong>Implement fair distribution mechanisms</strong> for winnings, including both even distribution and exponential decay models.</li>
+<li><strong>Ensure transparency and security</strong> by utilizing blockchain technology for all transactions and record-keeping.</li>
+</ul>
+<h3 id="key-features">Key Features</h3>
+<ul>
+<li>Users can <strong>submit new questions</strong> for betting markets.</li>
+<li>Users can <strong>place bets</strong> on their preferred options.</li>
+<li>The platform <strong>calculates winnings</strong> based on the outcome and distribution model.</li>
+<li><strong>Early voters</strong> can receive larger shares if the exponential decay model is selected.</li>
+<li>A <strong>transparent and tamper-proof</strong> system for managing bets and payouts.</li>
+</ul>
+<hr>
+<h2 id="technical-stack">Technical Stack</h2>
+<ul>
+<li><strong>Blockchain Platform</strong>: Solana</li>
+<li><strong>Smart Contract Language</strong>: Rust</li>
+<li><strong>Frontend</strong>: React.js with TypeScript</li>
+<li><strong>Backend</strong>: Node.js with Express (if necessary for off-chain services)</li>
+<li><strong>Wallet Integration</strong>: Solana wallets such as Phantom</li>
+<li><strong>State Management</strong>: Redux or Context API</li>
+<li><strong>Data Storage</strong>: On-chain for essential data; off-chain (e.g., Firebase or MongoDB) for non-critical data if needed</li>
+<li><strong>Testing Framework</strong>: Mocha, Chai for JavaScript; Rust's built-in testing for smart contracts</li>
+</ul>
+<hr>
+<h2 id="architecture">Architecture</h2>
+<p><img src="https://example.com/solana-betting-dapp-architecture.png" alt="Architecture Diagram"></p>
+<h3 id="components">Components</h3>
+<ol>
+<li><strong>Smart Contracts (Programs)</strong>
+<ul>
+<li>Manages betting markets, user bets, and payout calculations.</li>
+</ul>
+</li>
+<li><strong>Frontend Application</strong>
+<ul>
+<li>User interface for interacting with the dApp.</li>
+</ul>
+</li>
+<li><strong>Backend Services</strong>
+<ul>
+<li>May handle non-critical operations like analytics or notifications.</li>
+</ul>
+</li>
+<li><strong>Wallet Integration</strong>
+<ul>
+<li>Allows users to connect their Solana wallets for transactions.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="smart-contract-design">Smart Contract Design</h2>
+<h3 id="overview">Overview</h3>
+<p>The smart contract will be responsible for:</p>
+<ul>
+<li><strong>Creating and managing betting markets</strong> (questions).</li>
+<li><strong>Accepting and recording bets</strong> from users.</li>
+<li><strong>Closing markets and determining winners</strong>.</li>
+<li><strong>Calculating and distributing winnings</strong> based on the selected distribution model.</li>
+</ul>
+<h3 id="key-data-structures">Key Data Structures</h3>
+<ul>
+<li><strong>Market</strong>
+<ul>
+<li>Unique ID</li>
+<li>Question text</li>
+<li>Options (e.g., &quot;Sleep&quot;, &quot;Commute&quot;)</li>
+<li>Status (Open, Closed)</li>
+<li>Total stakes per option</li>
+<li>Distribution model (Even, Exponential Decay)</li>
+<li>Creation and closing timestamps</li>
+</ul>
+</li>
+<li><strong>Bet</strong>
+<ul>
+<li>Market ID</li>
+<li>User's wallet address</li>
+<li>Selected option</li>
+<li>Amount staked</li>
+<li>Timestamp</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="frontend-application">Frontend Application</h2>
+<h3 id="features">Features</h3>
+<ul>
+<li><strong>Market List View</strong>
+<ul>
+<li>Displays all open and closed markets.</li>
+</ul>
+</li>
+<li><strong>Market Detail View</strong>
+<ul>
+<li>Shows question details, options, and betting interface.</li>
+</ul>
+</li>
+<li><strong>Betting Interface</strong>
+<ul>
+<li>Allows users to place bets.</li>
+</ul>
+</li>
+<li><strong>Wallet Integration</strong>
+<ul>
+<li>Users can connect their Solana wallets.</li>
+</ul>
+</li>
+<li><strong>Results and Winnings</strong>
+<ul>
+<li>Displays outcomes and users' winnings.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="backend-services">Backend Services</h2>
+<p>Though the core functionality is on-chain, we may need backend services for:</p>
+<ul>
+<li><strong>Notifications</strong>
+<ul>
+<li>Email or push notifications for market closures or winnings.</li>
+</ul>
+</li>
+<li><strong>Analytics</strong>
+<ul>
+<li>Aggregate data for user engagement metrics.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="file-structure-and-mock-code">File Structure and Mock Code</h2>
+<h3 id="smart-contracts-solana-programs">Smart Contracts (Solana Programs)</h3>
+<h4 id="1-programspsychbettingsrclibrs">1. <code>programs/psych_betting/src/lib.rs</code></h4>
+<pre class="hljs"><code><div>//! Main entry point for the betting market program.
+
+use solana_program::{
+    account_info::AccountInfo,
+    entrypoint,
+    entrypoint::ProgramResult,
+    pubkey::Pubkey,
+    msg,
+};
+
+pub mod processor;
+pub mod instruction;
+pub mod state;
+pub mod error;
+
+entrypoint!(process_instruction);
+
+/// Processes instructions received by the program.
+fn process_instruction(
+    program_id: &amp;Pubkey,         // Program ID
+    accounts: &amp;[AccountInfo],    // Accounts involved in the transaction
+    instruction_data: &amp;[u8],     // Serialized instruction data
+) -&gt; ProgramResult {
+    msg!(&quot;Processing instruction&quot;);
+    processor::process(program_id, accounts, instruction_data)
+}
+</div></code></pre>
+<h4 id="2-programspsychbettingsrcprocessorrs">2. <code>programs/psych_betting/src/processor.rs</code></h4>
+<pre class="hljs"><code><div>//! Processor module for handling instructions.
+
+use solana_program::{
+    account_info::AccountInfo,
+    pubkey::Pubkey,
+    program_error::ProgramError,
+};
+
+use crate::{instruction::PsychBettingInstruction, state::Market};
+
+/// Processes all instructions for the program.
+pub struct Processor;
+
+impl Processor {
+    /// Entry point for processing instructions.
+    pub fn process(
+        program_id: &amp;Pubkey,
+        accounts: &amp;[AccountInfo],
+        instruction_data: &amp;[u8],
+    ) -&gt; ProgramResult {
+        // Deserialize instruction data
+        let instruction = PsychBettingInstruction::unpack(instruction_data)?;
+
+        match instruction {
+            PsychBettingInstruction::CreateMarket { question, options, distribution_model } =&gt; {
+                Self::process_create_market(accounts, question, options, distribution_model, program_id)
+            },
+            PsychBettingInstruction::PlaceBet { market_id, option, amount } =&gt; {
+                Self::process_place_bet(accounts, market_id, option, amount, program_id)
+            },
+            PsychBettingInstruction::CloseMarket { market_id, winning_option } =&gt; {
+                Self::process_close_market(accounts, market_id, winning_option, program_id)
+            },
+        }
+    }
+
+    /// Processes the creation of a new betting market.
+    fn process_create_market(
+        accounts: &amp;[AccountInfo],
+        question: String,
+        options: Vec&lt;String&gt;,
+        distribution_model: u8,
+        program_id: &amp;Pubkey,
+    ) -&gt; ProgramResult {
+        // Implementation goes here...
+        Ok(())
+    }
+
+    /// Processes placing a bet on a market.
+    fn process_place_bet(
+        accounts: &amp;[AccountInfo],
+        market_id: u64,
+        option: String,
+        amount: u64,
+        program_id: &amp;Pubkey,
+    ) -&gt; ProgramResult {
+        // Implementation goes here...
+        Ok(())
+    }
+
+    /// Processes closing a market and distributing winnings.
+    fn process_close_market(
+        accounts: &amp;[AccountInfo],
+        market_id: u64,
+        winning_option: String,
+        program_id: &amp;Pubkey,
+    ) -&gt; ProgramResult {
+        // Implementation goes here...
+        Ok(())
+    }
+}
+</div></code></pre>
+<h4 id="3-programspsychbettingsrcinstructionrs">3. <code>programs/psych_betting/src/instruction.rs</code></h4>
+<pre class="hljs"><code><div>//! Defines the instructions supported by the program.
+
+use solana_program::program_error::ProgramError;
+
+/// Instruction definitions for the betting market program.
+pub enum PsychBettingInstruction {
+    /// Creates a new betting market.
+    ///
+    /// Accounts:
+    /// - [Signer] Creator's account.
+    CreateMarket { question: String, options: Vec&lt;String&gt;, distribution_model: u8 },
+
+    /// Places a bet on an existing market.
+    ///
+    /// Accounts:
+    /// - [Signer] Bettor's account.
+    PlaceBet { market_id: u64, option: String, amount: u64 },
+
+    /// Closes a market and determines the winning option.
+    ///
+    /// Accounts:
+    /// - [Signer] Market creator's account.
+    CloseMarket { market_id: u64, winning_option: String },
+}
+
+impl PsychBettingInstruction {
+    /// Unpacks a byte buffer into a [PsychBettingInstruction](enum.PsychBettingInstruction.html).
+    pub fn unpack(input: &amp;[u8]) -&gt; Result&lt;Self, ProgramError&gt; {
+        // Deserialize instruction data
+        Ok(Self::CreateMarket {
+            question: String::from(&quot;Example question&quot;),
+            options: vec![String::from(&quot;Option A&quot;), String::from(&quot;Option B&quot;)],
+            distribution_model: 0,
+        })
+    }
+}
+</div></code></pre>
+<h4 id="4-programspsychbettingsrcstaters">4. <code>programs/psych_betting/src/state.rs</code></h4>
+<pre class="hljs"><code><div>//! Defines the data structures stored on-chain.
+
+use solana_program::pubkey::Pubkey;
+
+/// Represents a betting market.
+pub struct Market {
+    /// Unique identifier for the market.
+    pub market_id: u64,
+    /// The question posed in the market.
+    pub question: String,
+    /// Available options to bet on.
+    pub options: Vec&lt;String&gt;,
+    /// The creator of the market.
+    pub creator: Pubkey,
+    /// Current status of the market (e.g., Open, Closed).
+    pub status: u8,
+    /// Total stakes placed on each option.
+    pub total_stakes: Vec&lt;u64&gt;,
+    /// Distribution model (0 for Even, 1 for Exponential Decay).
+    pub distribution_model: u8,
+    /// Timestamps for creation and closing.
+    pub timestamps: (u64, Option&lt;u64&gt;),
+}
+</div></code></pre>
+<h3 id="frontend-application">Frontend Application</h3>
+<h4 id="1-srcapptsx">1. <code>src/App.tsx</code></h4>
+<pre class="hljs"><code><div>// Main application component.
+
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { MarketsList } from './components/MarketsList';
+import { MarketDetail } from './components/MarketDetail';
+import { Header } from './components/Header';
+
+const App: React.FC = () =&gt; {
+  return (
+    &lt;Router&gt;
+      &lt;Header /&gt;
+      &lt;Switch&gt;
+        &lt;Route exact path=&quot;/&quot; component={MarketsList} /&gt;
+        &lt;Route path=&quot;/market/:id&quot; component={MarketDetail} /&gt;
+      &lt;/Switch&gt;
+    &lt;/Router&gt;
+  );
+};
+
+export default App;
+</div></code></pre>
+<h4 id="2-srccomponentsmarketslisttsx">2. <code>src/components/MarketsList.tsx</code></h4>
+<pre class="hljs"><code><div>// Component to display a list of all betting markets.
+
+import React, { useEffect, useState } from 'react';
+import { MarketCard } from './MarketCard';
+
+export const MarketsList: React.FC = () =&gt; {
+  const [markets, setMarkets] = useState([]);
+
+  useEffect(() =&gt; {
+    // Fetch list of markets from the blockchain or an API
+  }, []);
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Open Markets&lt;/h2&gt;
+      {markets.map((market) =&gt; (
+        &lt;MarketCard key={market.marketId} market={market} /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};
+</div></code></pre>
+<h4 id="3-srccomponentsmarketdetailtsx">3. <code>src/components/MarketDetail.tsx</code></h4>
+<pre class="hljs"><code><div>// Component to display details of a single market and allow betting.
+
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { placeBet } from '../utils/transactions';
+
+export const MarketDetail: React.FC = () =&gt; {
+  const { id } = useParams&lt;{ id: string }&gt;();
+  const [market, setMarket] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [betAmount, setBetAmount] = useState(0);
+
+  useEffect(() =&gt; {
+    // Fetch market details using the market ID
+  }, [id]);
+
+  const handleBet = () =&gt; {
+    // Calls the placeBet function to place a bet on the blockchain
+    placeBet(market.marketId, selectedOption, betAmount);
+  };
+
+  return (
+    &lt;div&gt;
+      {market &amp;&amp; (
+        &lt;&gt;
+          &lt;h2&gt;{market.question}&lt;/h2&gt;
+          &lt;div&gt;
+            {market.options.map((option) =&gt; (
+              &lt;button key={option} onClick={() =&gt; setSelectedOption(option)}&gt;
+                {option}
+              &lt;/button&gt;
+            ))}
+          &lt;/div&gt;
+          &lt;input
+            type=&quot;number&quot;
+            value={betAmount}
+            onChange={(e) =&gt; setBetAmount(Number(e.target.value))}
+          /&gt;
+          &lt;button onClick={handleBet}&gt;Place Bet&lt;/button&gt;
+        &lt;/&gt;
+      )}
+    &lt;/div&gt;
+  );
+};
+</div></code></pre>
+<h4 id="4-srcutilstransactionsts">4. <code>src/utils/transactions.ts</code></h4>
+<pre class="hljs"><code><div>// Utility functions for interacting with the Solana blockchain.
+
+import { Connection, PublicKey, Transaction } from '@solana/web3.js';
+
+export const placeBet = async (marketId: number, option: string, amount: number) =&gt; {
+  // Connect to wallet and send transaction to place a bet
+};
+</div></code></pre>
+<h3 id="backend-services-optional">Backend Services (Optional)</h3>
+<h4 id="1-backendserverjs">1. <code>backend/server.js</code></h4>
+<pre class="hljs"><code><div>// Backend server for handling optional services like notifications.
+
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Middleware and routes would be set up here
+
+app.listen(port, () =&gt; {
+  console.log(`Backend server is running on port ${port}`);
+});
+</div></code></pre>
+<hr>
+<h2 id="security-considerations">Security Considerations</h2>
+<ul>
+<li><strong>Input Validation</strong>
+<ul>
+<li>Ensure all user inputs are validated and sanitized both on the client and smart contract level.</li>
+</ul>
+</li>
+<li><strong>Access Control</strong>
+<ul>
+<li>Restrict functions like closing a market to authorized accounts (e.g., market creator).</li>
+</ul>
+</li>
+<li><strong>Reentrancy</strong>
+<ul>
+<li>Although not common in Solana due to the single-threaded runtime, ensure state changes happen before external calls.</li>
+</ul>
+</li>
+<li><strong>Overflow/Underflow</strong>
+<ul>
+<li>Use Rust's safe arithmetic operations to prevent numeric overflows or underflows.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="testing-plan">Testing Plan</h2>
+<h3 id="smart-contracts">Smart Contracts</h3>
+<ul>
+<li><strong>Unit Tests</strong>
+<ul>
+<li>Test each instruction handler (create market, place bet, close market).</li>
+</ul>
+</li>
+<li><strong>Integration Tests</strong>
+<ul>
+<li>Simulate user interactions and ensure state changes are as expected.</li>
+</ul>
+</li>
+<li><strong>Edge Cases</strong>
+<ul>
+<li>Test with maximum and minimum values, and invalid inputs.</li>
+</ul>
+</li>
+</ul>
+<h3 id="frontend">Frontend</h3>
+<ul>
+<li><strong>Component Tests</strong>
+<ul>
+<li>Test UI components render correctly with various states.</li>
+</ul>
+</li>
+<li><strong>Functional Tests</strong>
+<ul>
+<li>Simulate user actions like placing bets, connecting wallets.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="deployment-strategy">Deployment Strategy</h2>
+<h3 id="smart-contracts">Smart Contracts</h3>
+<ul>
+<li><strong>Devnet Deployment</strong>
+<ul>
+<li>Deploy the program to Solana's Devnet for initial testing.</li>
+</ul>
+</li>
+<li><strong>Mainnet Deployment</strong>
+<ul>
+<li>Once thoroughly tested, deploy to Solana Mainnet Beta.</li>
+</ul>
+</li>
+</ul>
+<h3 id="frontend">Frontend</h3>
+<ul>
+<li><strong>Hosting</strong>
+<ul>
+<li>Use services like Netlify or Vercel for hosting.</li>
+</ul>
+</li>
+<li><strong>Environment Variables</strong>
+<ul>
+<li>Configure the app to connect to the appropriate RPC endpoints.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>This detailed plan outlines the development of a Solana-based betting dApp focusing on psychologically significant questions. The project leverages Solana's speed and low fees to provide an engaging and fair betting platform. With careful planning of the architecture, thorough documentation, and emphasis on security and testing, this dApp aims to deliver a robust and user-friendly experience.</p>
+<hr>
+<h1 id="next-steps">Next Steps</h1>
+<ul>
+<li><strong>Set Up Development Environment</strong>
+<ul>
+<li>Install necessary tools for Solana and React development.</li>
+</ul>
+</li>
+<li><strong>Implement Smart Contracts</strong>
+<ul>
+<li>Begin coding the smart contracts as per the outlined structure.</li>
+</ul>
+</li>
+<li><strong>Develop Frontend Components</strong>
+<ul>
+<li>Build out the React components and integrate with wallet providers.</li>
+</ul>
+</li>
+<li><strong>Continuous Testing</strong>
+<ul>
+<li>Write tests alongside development to ensure code quality.</li>
+</ul>
+</li>
+<li><strong>Deploy to Devnet</strong>
+<ul>
+<li>Regularly deploy to Devnet for integration testing.</li>
+</ul>
+</li>
+<li><strong>Gather Feedback</strong>
+<ul>
+<li>Share with a small group of users or testers to get early feedback.</li>
+</ul>
+</li>
+</ul>
+<p>Let me know if you'd like to explore any section in more detail or have any specific questions!
+&quot;&quot;&quot;</p>
+
+</body>
+</html>

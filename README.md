@@ -2,7 +2,10 @@
 
 ## What's This All About?
 
-RabbitLeHole is a betting market that plunges into the depths of what people truly value. is a betting market to explore what people think matters most in their lives. Instead of just asking people to fill out boring surveys, we let them put their money where their mouth is! Using Solana's blockchain technology, people can bet on questions like:
+RabbitHole is a betting market for what people think matters most in their lives. Instead of just asking people to fill out boring surveys, we let them put their money where their mouth is! Using Solana's blockchain technology, people can bet on questions like:
+
+![Demo of RabbitLeHole betting interface](demo_poster.png)
+
 
 - "Which would you choose - living in spacious beautiful house oceanside alone or in a city surrounded by your social circle?"
 - "What's preferable - being middle class in a free society or wealthy in an authoritarian one?" (Minimum 10k wallet value to vote)
